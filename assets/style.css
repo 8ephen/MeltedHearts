@@ -1,5 +1,4 @@
 
-
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Pacifico&display=swap');
 
 * {
@@ -151,9 +150,9 @@ header {
     /* Bottom shadow for depth */
     inset 0 -5px 15px rgba(0,0,0,0.15);
   padding: 3rem 2.5rem;
-  margin-left: 60px;
-  margin-right: 60px;
-  max-width: calc(100% - 120px);
+  margin-left: 10px;
+  margin-right: 10px;
+  max-width: calc(100% - 20px);
 }
 
 .contact-section {
@@ -289,6 +288,10 @@ header {
   background-image: url('CookieSmoresBite.png');
 
 }
+.cookie-imagesm:active {
+  background-image: url('CookieSmoresBite.png');
+
+}
 
 
 .cookie-name {
@@ -365,7 +368,7 @@ header {
   }
   
   .section {
-    padding: 1.2rem 0.5rem;
+    padding: 1.2rem 0.5rem 2rem;
   }
   
   
