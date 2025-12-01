@@ -1,0 +1,331 @@
+/*
+  Melted Hearts Cookie Company Theme
+  - Pastel gradient background (yellow-pink)
+  - Playful, bold sans-serif and script fonts
+  - Cookie/heart motifs
+  - Animations for sections (slide-in left/right)
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Pacifico&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Montserrat', Arial, sans-serif;
+  background: white;
+  color: #4b2e13;
+  overflow-x: hidden;
+}
+
+.hero {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.hero-logo-full {
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 600px;
+  object-fit: contain;
+  z-index: 1;
+  opacity: 0;
+  animation: fadeIn 1.2s ease-out 0.3s forwards;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.content-wrapper {
+  position: relative;
+  z-index: 100;
+  margin-top: 100vh;
+  background: transparent;
+  width: 100%;
+  padding-top: 320px;
+  padding-bottom: 100vh;
+}
+
+.cookie-tray-bg {
+  display: none;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1rem;
+}
+
+.company-name {
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  margin: 0.5rem 0 0.2rem 0;
+  color: #4b2e13;
+  text-shadow: 2px 2px 4px rgba(255,255,255,0.3);
+}
+
+.tagline {
+  font-family: 'Pacifico', cursive;
+  font-size: 1.5rem;
+  color: #b97a56;
+  margin-bottom: 0.5rem;
+  text-shadow: 1px 1px 2px rgba(255,255,255,0.2);
+}
+
+.location {
+  font-size: 1.1rem;
+  color: #7c4a1e;
+  margin-bottom: 1.5rem;
+  text-shadow: 1px 1px 2px rgba(255,255,255,0.2);
+}
+
+.white-overlay {
+  display: none;
+}
+
+.section {
+  max-width: 900px;
+  margin: 2rem auto;
+  background: transparent;
+  border-radius: 2rem;
+  box-shadow: none;
+  padding: 2rem 1.5rem;
+  position: relative;
+  overflow: visible;
+  z-index: 3;
+}
+
+.cookies-section {
+  background: 
+    /* Diagonal white stripes for reflection */
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 35px,
+      rgba(255,255,255,0.15) 35px,
+      rgba(255,255,255,0.15) 70px
+    ),
+    /* Beige tray background */
+    linear-gradient(135deg, #e8dcc4 0%, #f5ead9 50%, #e8dcc4 100%);
+  border: none;
+  border-radius: 35px;
+  box-shadow: 
+    /* Outer metal frame shadow */
+    0 20px 50px rgba(0,0,0,0.3),
+    0 10px 25px rgba(0,0,0,0.2),
+    /* Outer silver rim */
+    inset 0 0 0 10px #e0e0e0,
+    inset 0 0 0 12px #c0c0c0,
+    inset 0 0 0 16px #a8a8a8,
+    /* Dark gray middle */
+    inset 0 0 0 20px #707070,
+    /* Inner dark edge */
+    inset 0 0 0 24px #505050,
+    /* Bevel and highlight */
+    inset 2px 2px 8px rgba(255,255,255,0.7),
+    inset -3px -3px 8px rgba(0,0,0,0.2),
+    /* Bottom shadow for depth */
+    inset 0 -5px 15px rgba(0,0,0,0.15);
+  padding: 3rem 2.5rem;
+  margin-left: 60px;
+  margin-right: 60px;
+  max-width: calc(100% - 120px);
+}
+
+.contact-section {
+  position: fixed;
+  bottom: 50px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: calc(100% - 120px);
+  max-width: calc(100% - 120px);
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 2rem;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+  padding: 2rem 1.5rem;
+  z-index: 99;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0s;
+}
+
+.contact-section.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.section-title {
+  font-family: 'Pacifico', cursive;
+  font-size: 2rem;
+  color: #b97a56;
+  margin-bottom: 1.2rem;
+  text-align: center;
+}
+
+.cookies {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.cookie-card {
+  background: transparent;
+  border-radius: 1.2rem;
+  box-shadow: none;
+  padding: 1.2rem 1rem;
+  width: 200px;
+  text-align: center;
+  transition: transform 0.3s;
+  position: relative;
+}
+
+.cookie-card:hover {
+  transform: translateY(-8px) scale(1.04);
+  box-shadow: 0 8px 24px 0 rgba(0,0,0,0.10);
+}
+
+.cookie-emoji {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.cookie-image {
+  width: 250px;
+  height: 250px;
+  object-fit: contain;
+  margin: 0 auto 0.5rem auto;
+  display: block;
+    position: relative;
+    left: -45px;
+     background-image: url('CookieDoubleChocolate.png');
+      background-size: cover; /* Adjust as needed */
+  background-position: center; /* Adjust as needed */
+  transition: background-image 0.3s ease-in-out; /* Smooth transition */
+}
+.cookie-image:hover {
+  background-image: url('CookieDoubleChocolateBite.png');
+
+}
+
+.cookie-name {
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #7c4a1e;
+  margin-bottom: 0.3rem;
+  position: relative;
+  top: -50px;
+}
+
+.cookie-desc {
+  font-size: 1rem;
+  color: #4b2e13;
+}
+
+/* Slide-in Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-80px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(80px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.slide-in-left {
+  animation: slideInLeft 1s cubic-bezier(.6,-0.01,.45,1.01) both;
+}
+
+.slide-in-right {
+  animation: slideInRight 1s cubic-bezier(.6,-0.01,.45,1.01) both;
+}
+
+/* Contact & About */
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7rem;
+  font-size: 1.1rem;
+}
+
+.contact-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.contact-icon {
+  font-size: 1.3rem;
+  color: #b97a56;
+}
+
+.owner {
+  font-family: 'Pacifico', cursive;
+  font-size: 1.2rem;
+  color: #b97a56;
+  margin-bottom: 0.2rem;
+}
+
+@media (max-width: 700px) {
+  .cookies {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .section {
+    padding: 1.2rem 0.5rem;
+  }
+  
+  .hero {
+    height: 60vh;
+  }
+  
+  .company-name {
+    font-size: 1.8rem;
+  }
+  
+  .tagline {
+    font-size: 1.1rem;
+  }
+}
+@media (min-width: 700px) {
+
+  .hero {
+    height: 60vh;}
+
+}
