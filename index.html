@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Melted Hearts Homemade Cookies</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <div class="hero">
+    <img src="assets/bitmap.png" alt="Melted Hearts Logo" class="hero-logo-full">
+    <div class="hero-content">
+    
+    </div>
+  </div>
+  <div class="content-wrapper">
+  <section class="section cookies-section slide-in-left" style="animation-delay:0.5s">
+    <div class="section-title">Our Cookies</div>
+    <div class="cookies">
+      <div class="cookie-card slide-in-left" style="animation-delay:0.6s">
+        <div class="cookie-emoji">🍫🔥</div>
+        <div class="cookie-name">S'mores</div>
+        <div class="cookie-desc">A gooey, chocolatey treat with toasted marshmallow and graham cracker chunks.</div>
+      </div>
+      <div class="cookie-card slide-in-right" style="animation-delay:0.7s">
+        <div class="cookie-emoji">🥄✨</div>
+        <div class="cookie-name">Snickerdoodle</div>
+        <div class="cookie-desc">Soft, chewy, and rolled in cinnamon sugar for that classic flavor.</div>
+      </div>
+      <div class="cookie-card slide-in-left" style="animation-delay:0.8s">
+        <div class="cookie-image"></div>
+        <div class="cookie-name">Double Chocolate</div>
+      </div>
+      <div class="cookie-card slide-in-right" style="animation-delay:0.9s">
+        <div class="cookie-emoji">🍫🟫</div>
+        <div class="cookie-name">Brownie</div>
+        <div class="cookie-desc">Thick, decadent brownie cookie with a melt-in-your-mouth center.</div>
+      </div>
+    </div>
+  </section>
+  </div>
+
+  <section class="section contact-section" style="animation-delay:1.0s">
+    <div class="section-title">About & Contact</div>
+    <div class="contact-info">
+      <div class="owner">Rachel Cazares, Owner</div>
+      <div class="contact-row"><span class="contact-icon">📞</span> (661) 390-5988</div>
+      <div class="contact-row"><span class="contact-icon">✉️</span> meltedhearts55@gmail.com</div>
+      <div class="contact-row"><span class="contact-icon">📸</span> @meltedhearts_xoxo</div>
+      <div class="contact-row"><span class="contact-icon">📍</span> Long Beach, CA</div>
+    </div>
+  </section>
+
+  <script>
+    // Animate sections/cards in sequence
+    document.querySelectorAll('[class*="slide-in-"]').forEach((el, i) => {
+      el.style.animationDelay = (0.1 + i * 0.1) + 's';
+    });
+    
+    // Show contact section when cookie tray border covers it
+    const contactSection = document.querySelector('.contact-section');
+    const cookiesSection = document.querySelector('.cookies-section');
+    
+    window.addEventListener('scroll', function() {
+      const cookiesSectionRect = cookiesSection.getBoundingClientRect();
+      const scrollPosition = window.scrollY;
+      
+      // Show contact section once the cookies section is visible on screen
+      if (cookiesSectionRect.top <= window.innerHeight * 0.5) {
+        contactSection.classList.add('visible');
+      } else {
+        contactSection.classList.remove('visible');
+      }
+    });
+  </script>
+</body>
+</html>
